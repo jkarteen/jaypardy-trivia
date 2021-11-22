@@ -1,0 +1,27 @@
+body {
+  background-color: #080783;
+}
+
+h1, h2, h3, h4, p {
+  color: #ffffff;
+  text-align: center;
+}
+
+.category-tub, .question-tub {
+  border: solid white 3px;
+  border-radius: 5px;
+  width: 50%;
+  height: 15rem;
+  text-align: center;
+  margin: 2rem auto;
+  background-color: #3f3f9c;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.question-tub {
+  font-size: 1.5rem
+}
