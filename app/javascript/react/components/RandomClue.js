@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import QuestionTile from './QuestionTile'
+import RandomQuestionTile from './RandomQuestionTile'
 import AnswerForm from './AnswerForm'
-import Message from './Message'
+import MessageRandom from './MessageRandom'
 
 const LandingPage = props => {
   const [randomQuestion, setRandomQuestion] = useState()
@@ -54,11 +54,11 @@ const LandingPage = props => {
     <div>
       <h1 className="welcome">Welcome to Jaypardy!</h1>
       <h5>Presented by: Jason Korwek</h5>
-      <QuestionTile
+      <RandomQuestionTile
         randomQuestion={randomQuestion}
         category={category}
       />
-      <Message 
+      <MessageRandom 
         popup={popup}
         result={result}
         correctAnswer={correctAnswer}

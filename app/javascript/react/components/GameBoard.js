@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import CategoryTile from './CategoryTile'
 import ValueTile from './ValueTile'
+import ClueModal from './ClueModal'
 
 const GameBoard = props => {
   const [categoriesArray, setCategoriesArray] = useState([])
-
-  const getRandomCategories = () => {
-    return Math.floor(Math.random() * 18405)
-  }
-
-  const offset = getRandomCategories()
+  const [modalShow, setModalShow] = useState({show: false})
+  const [currentClue, setCurrentClue] = useState()
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(`https://jservice.io/api/categories?count=5&offset=${offset}`)
+      const response = await fetch("api/v1/clues")
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      setCategoriesArray(responseBody)
+      setCategoriesArray(responseBody.categories)
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
@@ -28,9 +25,26 @@ const GameBoard = props => {
   useEffect(() => {
     fetchCategories()
   }, [])
+
+  const showModal = () => {
+    setModalShow({show: true})
+  }
+
+  const hideModal = () => {
+    setModalShow({show: false})
+  }
+
+  const handleClueClick = event => {
+    let selected = event.currentTarget.children[0]
+    selected.innerText = ""
+    if (event.currentTarget.id == 0) {
+      let categoryClue = categoriesArray[0].clues[0]
+      setCurrentClue(categoryClue)
+      showModal()
+    }
+  }
   
   const categories = categoriesArray.map((category) => {
-
     return (
         <CategoryTile
           key={category.id}
@@ -60,11 +74,12 @@ const GameBoard = props => {
     }
   }
   
-  const clueValues = clueValuesArray.map((value) => {
-  
+  const clueValues = clueValuesArray.map((value, index) => {
     return (
       <ValueTile 
         value={value}
+        index={index}
+        handleClueClick={handleClueClick}
       />
     )
   })
@@ -74,6 +89,12 @@ const GameBoard = props => {
       <div className="grid-x">
         {categories}
       </div>
+      <ClueModal 
+        modalShow={modalShow}
+        showModal={showModal}
+        hideModal={hideModal}
+        currentClue={currentClue}
+      />
       <div className="grid-x">
         {clueValues}
       </div>

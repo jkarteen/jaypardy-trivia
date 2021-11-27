@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "homes#index"
 
   get "/random", to: "homes#index"
+  get "/clues", to: "api/v1/clues#index"
 
   namespace :api do
     namespace :v1 do

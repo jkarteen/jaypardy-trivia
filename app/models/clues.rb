@@ -1,4 +1,0 @@
-class Clues < ApplicationRecord
-
-
-end
