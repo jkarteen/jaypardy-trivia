@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import QuestionTile from './QuestionTile'
+import RandomQuestionTile from './RandomQuestionTile'
 import AnswerForm from './AnswerForm'
-import Message from './Message'
+import MessageRandom from './MessageRandom'
 
 const LandingPage = props => {
   const [randomQuestion, setRandomQuestion] = useState()
   const [category, setCategory] = useState()
   const [correctAnswer, setCorrectAnswer] = useState()
-  const [playerAnswer, setPlayerAnswer] = useState()
+  const [playerAnswer, setPlayerAnswer] = useState("")
   const [popup, setPopup] = useState()
 
   let result = ""
 
   const fetchQuestion = async () => {
     try{
+      setPlayerAnswer("")
+      setPopup(null)
       const response = await fetch('https://jservice.io/api/random')
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
@@ -52,11 +54,11 @@ const LandingPage = props => {
     <div>
       <h1 className="welcome">Welcome to Jaypardy!</h1>
       <h5>Presented by: Jason Korwek</h5>
-      <QuestionTile
+      <RandomQuestionTile
         randomQuestion={randomQuestion}
         category={category}
       />
-      <Message 
+      <MessageRandom 
         popup={popup}
         result={result}
         correctAnswer={correctAnswer}
@@ -65,6 +67,7 @@ const LandingPage = props => {
         handleSubmit={handleSubmit}
         handlePlayerAnswer={handlePlayerAnswer}
         fetchQuestion={fetchQuestion}
+        playerAnswer={playerAnswer}
       />
     </div>
   )

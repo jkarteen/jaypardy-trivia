@@ -1,7 +1,6 @@
 import React from 'react'
 
-const Message = props => {
-
+const GameMessage = props => {
   if (props.popup === "correct") {
     return (
       <div>
@@ -12,7 +11,7 @@ const Message = props => {
     return (
       <div>
         <h4 className={props.popup}>Incorrect!</h4>
-        <h4>The correct answer is: {props.correctAnswer}</h4>
+        <h4>The correct answer is: {props.currentAnswer}</h4>
       </div>
     )
   } else {
@@ -20,4 +19,4 @@ const Message = props => {
   }
 }
 
-export default Message
+export default GameMessage

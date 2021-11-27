@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const QuestionTile = (props) => {
+const RandomQuestionTile = (props) => {
 
   return (
     <div>
@@ -11,4 +11,4 @@ const QuestionTile = (props) => {
   )
 }
 
-export default QuestionTile
+export default RandomQuestionTile

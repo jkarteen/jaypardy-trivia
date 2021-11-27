@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '2.7.3'
 
+gem 'active_model_serializers'
 gem 'rails', '~> 6.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -43,3 +44,4 @@ gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'foundation-rails', '~> 6.5'
 gem 'webpacker', '~> 3.3'
+gem 'japi', '~> 1.1.2'

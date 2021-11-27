@@ -12,6 +12,10 @@ label {
   font-weight: 900;
 }
 
+form {
+  text-align: center;
+}
+
 input#answer {
   border: solid white 1px;
   border-radius: 5px;
@@ -37,6 +41,26 @@ input#answer {
   font-size: 1.5rem
 }
 
+.gb-category-tub, .gb-question-tub {
+  border: solid white 3px;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px #0e0e35;
+  width: 17%;
+  height: 8rem;
+  margin: 1rem auto;
+  background-color: #3f3f9c;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 0.5rem;
+  box-sizing: unset;
+}
+
+.gb-category-text {
+  font-size: 1.1rem;
+}
+
 .button {
   font-weight: 900;
   border: solid white 3px;
@@ -57,10 +81,31 @@ input#answer {
 }
 
 .button-container {
-  display: inline-block;
+  display: inline;
+  width: 45%;
 }
 
 .form-container {
-  width: 35%;
+  width: 40%;
   margin: auto;
+}
+
+.modal {
+  width: 90%;
+  height: 90%;
+  background-color: #3f3f9c;
+  border: solid white 3px;
+  transition: 1.1s ease-in-out;
+  box-shadow: 10px 10px 10px #0e0e35;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
