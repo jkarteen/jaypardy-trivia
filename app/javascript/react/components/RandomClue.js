@@ -3,7 +3,7 @@ import RandomQuestionTile from './RandomQuestionTile'
 import AnswerForm from './AnswerForm'
 import MessageRandom from './MessageRandom'
 
-const LandingPage = props => {
+const RandomClue = props => {
   const [randomQuestion, setRandomQuestion] = useState()
   const [category, setCategory] = useState()
   const [correctAnswer, setCorrectAnswer] = useState()
@@ -52,8 +52,7 @@ const LandingPage = props => {
 
   return (
     <div>
-      <h1 className="welcome">Welcome to Jaypardy!</h1>
-      <h5>Presented by: Jason Korwek</h5>
+      <h1 className="welcome">Random Clue Generator</h1>
       <RandomQuestionTile
         randomQuestion={randomQuestion}
         category={category}
@@ -73,4 +72,4 @@ const LandingPage = props => {
   )
 }
 
-export default LandingPage
+export default RandomClue

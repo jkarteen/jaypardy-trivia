@@ -10,7 +10,7 @@ const GameBoard = props => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("api/v1/clues")
+      const response = await fetch("/api/v1/gameboards/new")
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
@@ -77,6 +77,7 @@ const GameBoard = props => {
   const clueValues = clueValuesArray.map((value, index) => {
     return (
       <ValueTile 
+        key={index}
         value={value}
         index={index}
         handleClueClick={handleClueClick}

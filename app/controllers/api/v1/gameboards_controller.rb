@@ -1,7 +1,10 @@
-class Api::V1::CluesController < ApplicationController
-  protect_from_forgery unless: -> { request.format.json? }
-  
+class Api::V1::GameboardsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
+  end
+
+  def new
     @categories = []
 
     offset = rand(1500)

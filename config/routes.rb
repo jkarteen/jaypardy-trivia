@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
   root "homes#index"
-
   get "/random", to: "homes#index"
-  get "/clues", to: "api/v1/clues#index"
+  get "/gameboards", to: "homes#index"
+  get "/gameboards/new", to: "homes#authenticated"
 
   namespace :api do
     namespace :v1 do
-      resources :clues, only: [:index]
+      resources :gameboards, only: [:new]
+      resources :users, only: [:index]
     end
   end
 end

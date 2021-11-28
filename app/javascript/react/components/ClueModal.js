@@ -31,8 +31,8 @@ const ClueModal = props => {
             currentAnswer={props.currentClue.answer}
           />
           <div className="form-container">
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="answer">Answer</label>
+            <form className="modal-form" onSubmit={handleSubmit}>
+              <label id="answer-label" htmlFor="answer">Answer</label>
                 <input id="answer" type="text" value={playerAnswer} onChange={handlePlayerAnswer} />
                 <div className="button-container">
                   <input type="submit" value="Submit" className="button" />

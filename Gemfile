@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.3'
 
+gem 'font-awesome-rails'
+gem 'devise'
 gem 'active_model_serializers'
 gem 'rails', '~> 6.0'
 gem 'pg', '>= 0.18', '< 2.0'
