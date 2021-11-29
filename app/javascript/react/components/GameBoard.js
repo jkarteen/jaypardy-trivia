@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CategoryTile from './CategoryTile'
 import ValueTile from './ValueTile'
 import ClueModal from './ClueModal'
+import clueGrabber from './clueGrabber'
 
 const GameBoard = props => {
   const [categoriesArray, setCategoriesArray] = useState([])
@@ -21,6 +22,13 @@ const GameBoard = props => {
       console.error(`Error in Fetch: ${error.message}`)
     }
   }
+
+  const handleClueClick = event => {
+    let selected = event.currentTarget.children[0]
+    selected.innerText = ""
+    setCurrentClue(clueGrabber(event.currentTarget.id, categoriesArray))
+    showModal()
+  }
   
   useEffect(() => {
     fetchCategories()
@@ -32,16 +40,6 @@ const GameBoard = props => {
 
   const hideModal = () => {
     setModalShow({show: false})
-  }
-
-  const handleClueClick = event => {
-    let selected = event.currentTarget.children[0]
-    selected.innerText = ""
-    if (event.currentTarget.id == 0) {
-      let categoryClue = categoriesArray[0].clues[0]
-      setCurrentClue(categoryClue)
-      showModal()
-    }
   }
   
   const categories = categoriesArray.map((category) => {
