@@ -52,7 +52,7 @@ const RandomClue = props => {
 
   return (
     <div>
-      <h1 className="welcome">Random Clue Generator</h1>
+      <h1 className="random-welcome">RANDOM CLUE GENERATOR</h1>
       <RandomQuestionTile
         randomQuestion={randomQuestion}
         category={category}

@@ -4,14 +4,14 @@ const GameMessage = props => {
   if (props.popup === "correct") {
     return (
       <div>
-        <h4 className={props.popup}>Correct!</h4>
+        <h4 className={props.popup}>CORRECT!</h4>
       </div>
     )
   } else if (props.popup === "incorrect") {
     return (
       <div>
-        <h4 className={props.popup}>Incorrect!</h4>
-        <h4>The correct answer is: {props.currentAnswer}</h4>
+        <h4 className={props.popup}>INCORRECT!</h4>
+        <h4>THE CORRECT ANSWER IS: {props.currentAnswer}</h4>
       </div>
     )
   } else {

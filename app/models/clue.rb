@@ -10,5 +10,4 @@ class Clue < ApplicationRecord
   validates :answered, inclusion: { in: [true, false] }
 
   belongs_to :category
-  # belongs_to :user
 end

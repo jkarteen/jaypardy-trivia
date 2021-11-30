@@ -1,10 +1,16 @@
 body {
   background-color: #080783;
+  font-family: "ITC Korinna"
 }
 
 h1, h2, h3, h4, h5, p {
   color: #ffffff;
+  font-family: "ITC Korinna";
   text-align: center;
+}
+
+p {
+  font-size: 200%;
 }
 
 label {
@@ -28,6 +34,8 @@ input#answer {
   border: solid white 1px;
   border-radius: 5px;
   min-width: 250px;
+  font-size: 125%;
+  font-weight: 900;
 }
 
 .flash-notice, .flash-alert {
@@ -78,12 +86,14 @@ input#answer {
 
 .button {
   font-weight: 900;
+  font-size: 125%;
   border: solid white 3px;
   border-radius: 5px;
   background-color: #3f3f9c;
   box-shadow: 10px 10px 10px #0e0e35;
   user-select: none;
   margin: 0.5rem 1rem;
+  min-width: 50%;
 }
 
 .button:focus {
@@ -104,6 +114,7 @@ input#answer {
   justify-content: center;
   align-content: center;
   align-items: center;
+  font-size: 150%;
 }
 
 .start-game-button-container {
@@ -115,6 +126,11 @@ input#answer {
 .form-container {
   width: 40%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .modal {
@@ -131,13 +147,12 @@ input#answer {
   transform: translate(-50%, -50%);
   margin: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
   align-content: center;
   flex-direction: column;
 }
 
-.modal-form {
+#modal-form {
   min-width: 250px;
 }
 
@@ -155,6 +170,10 @@ input#answer {
 
 .link-wrapper {
   padding-left: 2rem;
+}
+
+.random-welcome {
+  margin-top: 2rem;
 }
 
 .sign-wrapper {
@@ -191,6 +210,9 @@ input#answer {
 
 .page-link, .page-link:visited {
   color: white;
+  font-family: "ITC Korinna";
+  font-weight: 900;
+  font-size: 125%;
 }
 
 .main-page {
@@ -226,6 +248,12 @@ input#answer {
   transition: 0.5s;
 }
 
+.score-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 #modalClue {
   min-width: 50%;
 }
@@ -235,5 +263,25 @@ input#answer {
 }
 
 #answer-label {
-  text-align: left;
+  text-align: center;
+  font-size: 125%;
+}
+
+#score {
+  margin: 1.75rem 1.0rem 1.0rem 1.0rem;
+  width: 30%;
+  border: solid white 3px;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px #0e0e35;
+  background-color: #3f3f9c;
+  font-size: 200%
+}
+
+#random-answer {
+  font-size: 125%;
+}
+
+#continue-button {
+  min-width: 150px;
+  max-width: 150px;
 }

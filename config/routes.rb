@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :gameboards, only: [:new]
-      resources :users, only: [:index]
+      resources :users, only: [:index] do
+        resources :scores, only: [:index, :create]
+      end
     end
   end
 end

@@ -10,6 +10,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
 
-  has_many :clues
-  has_many :categories, through: :clues
+  has_many :scores
 end
