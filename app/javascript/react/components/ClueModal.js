@@ -1,22 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import GameMessage from './GameMessage'
+import postScore from '../apiClient/postScore'
 
 const ClueModal = props => {
-  const [playerAnswer, setPlayerAnswer] = useState("")
-  const [popup, setPopup] = useState()
+  const [progressCounter, setProgressCounter] = useState(0)
+
+  if (progressCounter === 25){
+    postScore(props.currentUser.id, props.currentScore)
+    setProgressCounter(0)
+  }
 
   const handleSubmit = event => {
     event.preventDefault()
-    let playerAnswerUpped = playerAnswer.toUpperCase()
-    if (playerAnswerUpped === props.currentClue.answer.toUpperCase()) {
-      setPopup("correct")
+    let disableEnter = document.getElementById("modal-form")
+    disableEnter.addEventListener("keypress", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+      }
+    })
+    if (props.playerAnswer.toUpperCase() === props.currentClue.answer.toUpperCase()) {
+      let updatedScore = props.currentScore + props.currentClue.value
+      props.setCurrentScore(updatedScore)
+      props.setPopup("correct")
     } else {
-      setPopup("incorrect")
+      props.setPopup("incorrect")
     }
+    setProgressCounter(progressCounter + 1)
+    props.setButtonShow("continue")
   }
 
-  const handlePlayerAnswer = event => {
-    setPlayerAnswer(event.target.value)
+  let buttonChoice = ""
+  if (props.buttonShow === "submit") {
+    buttonChoice = <input type="submit" value="SUBMIT" className="button" />
+  } else {
+    buttonChoice = null
   }
   
   if (!props.modalShow.show) {
@@ -25,20 +42,20 @@ const ClueModal = props => {
     return (
       <div className="modal">
         <div>
-          <h4 id="modalClue">{props.currentClue.question}</h4>
+          <h4 id="modalClue">{props.currentClue.question.toUpperCase()}</h4>
           <GameMessage 
-            popup={popup}
-            currentAnswer={props.currentClue.answer}
+            popup={props.popup}
+            currentAnswer={props.currentClue.answer.toUpperCase()}
           />
           <div className="form-container">
-            <form className="modal-form" onSubmit={handleSubmit}>
-              <label id="answer-label" htmlFor="answer">Answer</label>
-                <input id="answer" type="text" value={playerAnswer} onChange={handlePlayerAnswer} />
+            <form id="modal-form" onSubmit={handleSubmit}>
+              <label id="answer-label" htmlFor="answer">ANSWER</label>
+                <input id="answer" type="text" value={props.playerAnswer} onChange={props.handlePlayerAnswer} />
                 <div className="button-container">
-                  <input type="submit" value="Submit" className="button" />
-                  <button type="button" className="button" onClick={props.hideModal}>Continue</button>
+                  {buttonChoice}
                 </div>
             </form>
+            <button id="continue-button" type="button" className="button" onClick={props.hideModal}>CONTINUE</button>
           </div>
         </div>
       </div>

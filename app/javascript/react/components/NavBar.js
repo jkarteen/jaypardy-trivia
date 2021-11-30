@@ -29,9 +29,9 @@ const NavBar = props => {
   }, [])
 
   if (signedIn === null) {
-    authentication = <div className="sign-wrapper"><a className="page-link" href="/users/sign_in">Sign In</a> / <a className="page-link" href="/users/sign_up">Sign Up</a></div>
+    authentication = <div className="sign-wrapper"><a className="page-link" href="/users/sign_in">SIGN IN</a> / <a className="page-link" href="/users/sign_up">SIGN UP</a></div>
   } else {
-    authentication = <div className="sign-wrapper"><a className="page-link" href="/users/sign_out" data-method="delete">Sign Out</a></div>
+    authentication = <div className="sign-wrapper"><a className="page-link" href="/users/sign_out" data-method="delete">SIGN OUT</a></div>
   }
   
   return (
@@ -39,10 +39,10 @@ const NavBar = props => {
       <div className="grid-container navbar">
         <div className ="top-bar cell grid-x"> 
           <div className="cell small-4 link-wrapper">
-            <Link to="/random" className="page-link"> Random Clue </Link>
+            <Link to="/random" className="page-link"> RANDOM CLUE </Link>
           </div>
           <div className="cell small-4 main-link-wrapper">
-            <Link to="/" className="page-link"> Jaypardy </Link>
+            <Link to="/" className="page-link"> JAYPARDY </Link>
           </div>
           <div className="cell small-4">
             <h4 className="sign-in-sign-up-sign-out">{authentication}</h4>
