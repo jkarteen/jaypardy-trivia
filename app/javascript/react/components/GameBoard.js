@@ -12,7 +12,7 @@ const GameBoard = props => {
   const [playerAnswer, setPlayerAnswer] = useState("")
   const [currentClue, setCurrentClue] = useState()
   const [currentUser, setCurrentUser] = useState()
-  const [currentScore, setCurrentScore] = useState(0)
+  const [currentScore, setCurrentScore] = useState({total: 0})
   const [buttonShow, setButtonShow] = useState("submit")
 
   const fetchCategories = async () => {

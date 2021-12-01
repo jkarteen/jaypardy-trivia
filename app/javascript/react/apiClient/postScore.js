@@ -7,7 +7,7 @@ const postScore = async (user, currentScore) => {
         "Accept": "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({total: 2500})
+      body: JSON.stringify(currentScore)
     })
     debugger
     if (!response.ok) {

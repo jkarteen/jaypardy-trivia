@@ -6,6 +6,7 @@ const ClueModal = props => {
   const [progressCounter, setProgressCounter] = useState(0)
 
   if (progressCounter === 25){
+    debugger
     postScore(props.currentUser.id, props.currentScore)
     setProgressCounter(0)
   }
@@ -19,8 +20,9 @@ const ClueModal = props => {
       }
     })
     if (props.playerAnswer.toUpperCase() === props.currentClue.answer.toUpperCase()) {
-      let updatedScore = props.currentScore + props.currentClue.value
-      props.setCurrentScore(updatedScore)
+      let scoreClone = props.currentScore.total
+      let updatedScore = scoreClone + props.currentClue.value
+      props.setCurrentScore({total: updatedScore})
       props.setPopup("correct")
     } else {
       props.setPopup("incorrect")
