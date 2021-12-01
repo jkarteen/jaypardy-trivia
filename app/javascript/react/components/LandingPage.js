@@ -21,7 +21,7 @@ const LandingPage = props => {
   return (
     <div className="welcome-text-container">
       <h1 className="intro-text">WELCOME TO JAYPARDY!</h1>
-        <p className="intro-text">Created by: Jason Korwek</p>
+        <p className="intro-text">Created by Jason Korwek</p>
       <h3 className="intro-text">Test your General and Pop Culture Knowledge</h3>
       <div className="start-game-button-container">
         <a href={newGame}><button type="button" className="button start-game" onClick={startNewGame}>
