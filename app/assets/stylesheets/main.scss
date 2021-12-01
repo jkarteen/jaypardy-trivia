@@ -257,6 +257,12 @@ input#answer {
   align-content: center;
 }
 
+.repo-link {
+  padding: 0rem 1.5rem;
+  margin-top: 1.0rem;
+  border-right: 3px solid white;
+}
+
 #modalClue {
   min-width: 50%;
 }
@@ -291,4 +297,11 @@ input#answer {
 
 #sign-up, #sign-in, #forgot {
   min-width: 15%;
+}
+
+#footer {
+  background-color:#3f3f9c;
+  margin-top: 8rem;
+  border-top: 3px solid white;
+  border-bottom: none;
 }
