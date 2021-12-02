@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, p {
   color: #ffffff;
   font-family: "ITC Korinna";
   text-align: center;
-  text-shadow: 5px 5px 8px black;
+  text-shadow: 5px 5px 8px #0e0e35;
 }
 
 p {
@@ -257,10 +257,20 @@ input#answer {
   align-content: center;
 }
 
-.repo-link {
+.footer-link {
+  color: white;
+  text-shadow: 5px 5px 8px #0e0e35;
   padding: 0rem 1.5rem;
-  margin-top: 1.0rem;
+  margin: 1.5rem 0rem;
   border-right: 3px solid white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer-link:hover {
+  color: gray;
+  transition: 0.5s
 }
 
 #modalClue {
@@ -301,7 +311,24 @@ input#answer {
 
 #footer {
   background-color:#3f3f9c;
-  margin-top: 8rem;
+  margin-top: 4rem;
   border-top: 3px solid white;
   border-bottom: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#photo {
+  border: 3px solid white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #0e0e35;
+}
+
+#footer-creator {
+  padding: 0rem 1.5rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
 }
