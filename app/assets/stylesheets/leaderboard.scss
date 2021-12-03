@@ -1,0 +1,36 @@
+.top-scores-container{
+  margin: 3rem;
+  padding: auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.scores-container {
+  border: 3px solid white;
+  border-radius: 5px;
+  background-color: #3f3f9c;
+  box-shadow: 10px 10px 10px #0e0e35;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+#rank {
+  width: 50px;
+}
+
+#high-score {
+  width: 125px;
+}
+
+#username {
+  width: 250px;
+}
+
+#rank-entry, #high-score-entry, #username-entry {
+  font-weight: 900;
+}
