@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/random", to: "homes#index"
   get "/gameboards", to: "homes#index"
   get "/gameboards/new", to: "homes#authenticated"
+  get "/leaderboard", to: "homes#index"
 
   namespace :api do
     namespace :v1 do
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index] do
         resources :scores, only: [:index, :create]
       end
+      resources :scores, only: [:index]
     end
   end
 end

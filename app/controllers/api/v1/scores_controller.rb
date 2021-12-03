@@ -1,7 +1,8 @@
 class Api::V1::ScoresController < ApiController
 
   def index
-    render json: { scores: Score.all }
+    sorted_scores = Score.order(total: :desc)
+    render json: sorted_scores.limit(20)
   end
 
   def create
@@ -21,9 +22,3 @@ class Api::V1::ScoresController < ApiController
     params.require(:score).permit(:total)
   end
 end
-
-
-
-# NoMethodError (undefined method `permit' for 0:Integer):
-# ArgumentError (When assigning attributes, you must pass a hash as an argument, Integer passed.):
-# ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError)

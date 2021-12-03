@@ -3,6 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom'
 import LandingPage from './LandingPage'
 import GameBoard from './GameBoard'
 import RandomClue from './RandomClue'
+import LeaderBoard from './LeaderBoard'
 
 const NavBar = props => {
   const [signedIn, setSignedIn] = useState(null)
@@ -54,8 +55,9 @@ const NavBar = props => {
           <Route exact path="/">
             <LandingPage signedIn={signedIn}/>
           </Route>
-          <Route exact path="/gameboards/new" component = {GameBoard} />
-          <Route exact path="/random" component = {RandomClue} />
+          <Route exact path="/gameboards/new" component={GameBoard} />
+          <Route exact path="/random" component={RandomClue} />
+          <Route exact path="/leaderboard" component={LeaderBoard} />
         </Switch>
       </div>
     </div>
