@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Gerard = User.create(email: "tardigrade36298@gmail.com", password:"123456789", first_name: "Gerard", last_name: "Cervantes", username: "gbcervantes")
+Keira = User.create(email: "jumpinghallelujah46@hotmail.com", password:"password", first_name: "Keira", last_name: "Johnson", username: "kJoHnSbAlLeR")
+Jimmy = User.create(email: "privateSpy007@aol.com", password:"lolsaucer", first_name: "Jimmy", last_name: "Bond", username: "homeOfficeMI5")
+Tandy = User.create(email: "danielCraigsuperFan@obsession.com", password:"bippityboppity", first_name: "Tandy", last_name: "Morales", username: "DCgreaterthanSC")
+Barbara = User.create(email: "joyluckclub@gmail.com", password:"simple12", first_name: "Barbara", last_name: "Willis", username: "oldladycrooner56")
+Apollo = User.create(email: "saveTHEbeaconiteX2@yahoo.com", password:"sunshiner42", first_name: "Apollo", last_name: "Nostrum", username: "PhillyPhanatic")
+Robert = User.create(email: "upsidedownPineapple@gamil.com", password:"symphony98", first_name: "Robert", last_name: "Blockenspiel", username: "UnderwaterPineapple")
+Silvio = User.create(email: "bowTruckle13@aol.com", password:"trufflesleuth45", first_name: "Silvio", last_name: "Burlesconi", username: "slytherinGroupie")
+Manny = User.create(email: "manny.ortega.4@gmail.com", password:"freeWashDC1776", first_name: "Manny", last_name: "Ortega", username: "DivisionAgent4")
+Alani = User.create(email: "alani.kelso.2@gmail.com", password:"OrderToChaos11", first_name: "Alani", last_name: "Kelso", username: "DivisionAgent2")
+Emeline = User.create(email: "OutcastLeader@gmail.com", password:"wildANDcrazy77", first_name: "Emeline", last_name: "Shaw", username: "OutcastLeader1")
+
+Score.create(total: 18000, user_id: Manny.id)
+Score.create(total: 3000, user_id: Alani.id)
+Score.create(total: 12400, user_id: Silvio.id)
+Score.create(total: 11800, user_id: Emeline.id)
+Score.create(total: 6600, user_id: Robert.id)
+Score.create(total: 1400, user_id: Apollo.id)
+Score.create(total: 19200, user_id: Gerard.id)
+Score.create(total: 11600, user_id: Tandy.id)
+Score.create(total: 8800, user_id: Jimmy.id)
+Score.create(total: 22600, user_id: Keira.id)
+Score.create(total: 400, user_id: Barbara.id)

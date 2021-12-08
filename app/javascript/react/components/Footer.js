@@ -7,7 +7,7 @@ const Footer = props => {
     <footer>
       <div className="grid-container" id="footer">
         <div className="grid-x">
-          <a className="footer-link" href="https://github.com/jkarteen/jaypardy-trivia">Github</a>
+          <a className="footer-link" href="https://github.com/jkarteen/jaypardy-trivia">GitHub</a>
           <a className="footer-link" href="https://www.linkedin.com/in/jason-korwek/">LinkedIn</a>
           <h4 id="footer-creator">Created by Jason Korwek</h4>
           <img src={creatorImage} id="photo"></img>
