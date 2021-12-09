@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect } from 'react-router'
 
 const UserProfile = props => {
   const [currentUser, setCurrentUser] = useState({
