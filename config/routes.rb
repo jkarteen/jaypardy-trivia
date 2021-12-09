@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   get "/gameboards", to: "homes#index"
   get "/gameboards/new", to: "homes#authenticated"
   get "/leaderboard", to: "homes#index"
+  get "/users/:id", to: "homes#index"
 
   namespace :api do
     namespace :v1 do
       resources :gameboards, only: [:new]
-      resources :users, only: [:index] do
+      resources :users, only: [:index, :show] do
         resources :scores, only: [:index, :create]
       end
       resources :scores, only: [:index]
