@@ -4,6 +4,8 @@ import ValueTile from './ValueTile'
 import ClueModal from './ClueModal'
 import clueGrabber from './clueGrabber'
 import Score from './Score'
+import fetchUser from '../apiClient/fetchUser' 
+import fetchCategories from '../apiClient/fetchCategories'
 
 const GameBoard = props => {
   const [categoriesArray, setCategoriesArray] = useState([])
@@ -15,40 +17,16 @@ const GameBoard = props => {
   const [currentScore, setCurrentScore] = useState({total: 0})
   const [buttonShow, setButtonShow] = useState("submit")
 
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch("/api/v1/gameboards/new")
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
-      const responseBody = await response.json()
-      setCategoriesArray(responseBody.categories)
-    } catch (error) {
-      console.error(`Error in Fetch: ${error.message}`)
-    }
-  }
-
-  const fetchUser = async () => {
-    try {
-      const response = await fetch("/api/v1/users")
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
-      const responseBody = await response.json()
-      setCurrentUser(responseBody.users)
-    } catch (error) {
-      console.error(`Error in Fetch: ${error.message}`)
-    }
-  }
-
   useEffect(() => {
-    fetchUser()
+    fetchUser().then((parsedUserData) => {
+      setCurrentUser(parsedUserData)
+    })
   }, [])
   
   useEffect(() => {
-    fetchCategories()
+    fetchCategories().then((parsedCategoryData) => {
+      setCategoriesArray(parsedCategoryData)
+    })
   }, [])
 
   const handlePlayerAnswer = event => {
