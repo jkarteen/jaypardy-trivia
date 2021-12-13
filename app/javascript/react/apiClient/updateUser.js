@@ -1,23 +1,23 @@
-const postScore = async (user, currentScore) => {
+const updateUser = async (user, gamesPlayed) => {
   try {
-    const response = await fetch(`/api/v1/users/${user}/scores`, {
+    const response = await fetch(`/api/v1/users/${user}`, {
       credentials: "same-origin",
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(currentScore)
+      body: JSON.stringify({games_played: gamesPlayed})
     })
     if (!response.ok) {
       const errorMessage = `${response.status} (${response.statusText})`
       throw new Error(errorMessage)
     }
     const responseBody = await response.json()
-    return responseBody
+    console.log(responseBody)
   } catch (error) {
-    console.error(`Error in Fetch: ${error.message}`)
+    console.log(`Error in Fetch: ${error.message}`)
   }
 }
 
-export default postScore
+export default updateUser

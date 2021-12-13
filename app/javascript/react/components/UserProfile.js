@@ -8,6 +8,7 @@ const UserProfile = props => {
     last_name: "",
     username: ""
   })
+  const [topScore, setTopScore] = useState(null)
 
   const id = props.match.params.id
   const fetchUser = async() => {
@@ -20,7 +21,8 @@ const UserProfile = props => {
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
-      setCurrentUser(responseBody.user)
+      setCurrentUser(responseBody[0].user)
+      setTopScore(responseBody[0].score[0].total)
     } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
@@ -31,10 +33,12 @@ const UserProfile = props => {
   }, [])
 
   return (
-    <div>
+    <div className="content-wrapper">
       <h2>{currentUser.username}'s Profile</h2>
-      <h5>Name: {currentUser.first_name} {currentUser.last_name}</h5>
-      <h5>Contact Info: {currentUser.email}</h5>
+      <h5 className="details-wrapper">Name: {currentUser.first_name} {currentUser.last_name}</h5>
+      <h5 className="details-wrapper">Contact Info: {currentUser.email}</h5>
+      <h5 className="details-wrapper">Games Played: {currentUser.games_played}</h5>
+      <h5 className="details-wrapper">Personal Best: {topScore}</h5>
     </div>
   )
 }

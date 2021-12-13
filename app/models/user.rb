@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
   validates :role, presence: true
+  validates :games_played, presence: true, numericality: { only_integer: true }
 
   has_many :scores
 end

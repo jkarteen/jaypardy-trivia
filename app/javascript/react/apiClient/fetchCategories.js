@@ -6,7 +6,6 @@ const fetchCategories = async () => {
       throw new Error(errorMessage)
     }
     const responseBody = await response.json()
-    console.log(responseBody)
     return responseBody.categories
   } catch (error) {
     console.error(`Error in Fetch: ${error.message}`)
