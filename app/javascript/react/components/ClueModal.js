@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import GameMessage from './GameMessage'
 import postScore from '../apiClient/postScore'
+import updateUser from '../apiClient/updateUser'
 
 const ClueModal = props => {
   const [progressCounter, setProgressCounter] = useState(0)
 
   if (progressCounter === 25){
-    debugger
     postScore(props.currentUser.id, props.currentScore)
+    updateUser(props.currentUser.id, props.currentUser.games_played + 1)
     setProgressCounter(0)
   }
 
@@ -31,11 +32,14 @@ const ClueModal = props => {
     props.setButtonShow("continue")
   }
 
-  let buttonChoice = ""
+  let submitButtonChoice = ""
+  let continueButtonChoice = ""
   if (props.buttonShow === "submit") {
-    buttonChoice = <input type="submit" value="SUBMIT" className="button" />
+    submitButtonChoice = <input type="submit" value="SUBMIT" className="button" />
+    continueButtonChoice = null
   } else {
-    buttonChoice = null
+    submitButtonChoice = null
+    continueButtonChoice = <button id="continue-button" type="button" className="button" onClick={props.hideModal}>CONTINUE</button>
   }
   
   if (!props.modalShow.show) {
@@ -54,10 +58,10 @@ const ClueModal = props => {
               <label id="answer-label" htmlFor="answer">ANSWER</label>
                 <input id="answer" type="text" value={props.playerAnswer} onChange={props.handlePlayerAnswer} />
                 <div className="button-container">
-                  {buttonChoice}
+                  {submitButtonChoice}
                 </div>
             </form>
-            <button id="continue-button" type="button" className="button" onClick={props.hideModal}>CONTINUE</button>
+            {continueButtonChoice}
           </div>
         </div>
       </div>
