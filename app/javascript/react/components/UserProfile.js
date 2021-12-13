@@ -34,7 +34,7 @@ const UserProfile = props => {
 
   return (
     <div className="content-wrapper">
-      <h2>{currentUser.username}'s Profile</h2>
+      <h2 className="details-wrapper">{currentUser.username}'s Profile</h2>
       <h5 className="details-wrapper">Name: {currentUser.first_name} {currentUser.last_name}</h5>
       <h5 className="details-wrapper">Contact Info: {currentUser.email}</h5>
       <h5 className="details-wrapper">Games Played: {currentUser.games_played}</h5>

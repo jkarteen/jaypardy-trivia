@@ -1,7 +1,7 @@
 class Api::V1::ScoresController < ApiController
 
   def index
-    render json: Score.all
+    render json: Score.order(total: :desc).limit(20)
   end
 
   def create
