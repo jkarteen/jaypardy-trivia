@@ -10,11 +10,19 @@ class Api::V1::UsersController < ApiController
   end
 
   def update
-    contestant = User.find(params["id"].to_i)
-    contestant.games_played = params["games_played"]
-    if !contestant.save
-      errors = new_score.errors.full_messages.to_sentence
-      render json: { response: errors }
+    if params["profile_photo"]
+      photo = User.find(params["id"])
+      photo.profile_photo = params["profile_photo"]
+      if photo.save
+        render json: photo
+      end
+    else
+      contestant = User.find(params["id"].to_i)
+      contestant.games_played = params["games_played"]
+      if !contestant.save
+        errors = new_score.errors.full_messages.to_sentence
+        render json: { response: errors }
+      end
     end
   end
 
