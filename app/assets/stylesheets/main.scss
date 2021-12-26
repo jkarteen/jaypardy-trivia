@@ -125,6 +125,12 @@ ul {
   transition: 0.5s;
 }
 
+.photo{
+  border: 3px solid white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #0e0e35;
+}
+
 #error_explanation {
   color: white
 }

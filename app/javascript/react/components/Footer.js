@@ -10,7 +10,7 @@ const Footer = props => {
           <a className="footer-link" href="https://github.com/jkarteen/jaypardy-trivia">GitHub</a>
           <a className="footer-link" href="https://www.linkedin.com/in/jason-korwek/">LinkedIn</a>
           <h4 id="footer-creator">Created by Jason Korwek</h4>
-          <img src={creatorImage} id="photo"></img>
+          <img src={creatorImage} className="photo"></img>
         </div>
       </div>
 
