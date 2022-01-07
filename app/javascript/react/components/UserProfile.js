@@ -27,18 +27,16 @@ const UserProfile = props => {
         throw new Error(errorMessage)
       }
       const responseBody = await response.json()
+      setCurrentUser(responseBody[0].user)
       if (responseBody[0].user.profile_photo.url == null) {
-        setCurrentUser(responseBody[0].user)
-        setTopScore(responseBody[0].score[0].total)
         setProfilePic(defaultPic)
       } else {
-        setCurrentUser(responseBody[0].user)
         setProfilePic(responseBody[0].user.profile_photo.url)
-        if (responseBody[0].score[0] == undefined) {
-          setTopScore("N/A")
-        } else {
-          setTopScore(responseBody[0].score[0].total)
         }
+      if (responseBody[0].score[0] == undefined) {
+        setTopScore("N/A")
+      } else {
+        setTopScore(responseBody[0].score[0].total)
       }
     } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
