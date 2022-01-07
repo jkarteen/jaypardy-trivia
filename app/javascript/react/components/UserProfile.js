@@ -16,7 +16,7 @@ const UserProfile = props => {
   const [profileImage, setProfileImage] = useState({image: "", status: false})
   const [topScore, setTopScore] = useState(null)
   const id = props.match.params.id
-
+  
   const fetchUser = async() => {
     try {
       const response = await fetch(`/api/v1/users/${id}`, {
@@ -72,6 +72,7 @@ const UserProfile = props => {
   const handleFileUpload = (acceptedFiles) => {
     setProfileImage({image: acceptedFiles[0], status: true})
   }
+
   let buttonElement = null
   if (profileImage.status == true) {
     buttonElement = <input className="profile-button" type="submit" value="Submit" />
