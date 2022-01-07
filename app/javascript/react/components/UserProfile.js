@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Dropzone from 'react-dropzone'
-import profileDefault from "../../../assets/images/profile-default.jpeg"
+import defaultPic from '../../../assets/images/profile-default.jpeg'
 
 const UserProfile = props => {
+
   const [currentUser, setCurrentUser] = useState({
     id: 0,
     email: "",
@@ -11,8 +12,11 @@ const UserProfile = props => {
     username: "",
     profile_photo: ""
   })
+  const [profilePic, setProfilePic] = useState("")
+  const [profileImage, setProfileImage] = useState({image: "", status: false})
   const [topScore, setTopScore] = useState(null)
   const id = props.match.params.id
+
   const fetchUser = async() => {
     try {
       const response = await fetch(`/api/v1/users/${id}`, {
@@ -24,17 +28,24 @@ const UserProfile = props => {
       }
       const responseBody = await response.json()
       setCurrentUser(responseBody[0].user)
-      setTopScore(responseBody[0].score[0].total)
+      if (responseBody[0].user.profile_photo.url == null) {
+        setProfilePic(defaultPic)
+      } else {
+        setProfilePic(responseBody[0].user.profile_photo.url)
+        }
+      if (responseBody[0].score[0] == undefined) {
+        setTopScore("N/A")
+      } else {
+        setTopScore(responseBody[0].score[0].total)
+      }
     } catch(error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
   }
-
+  
   useEffect(() => {
     fetchUser()
   }, [])
-
-  const [profileImage, setProfileImage] = useState({image: currentUser.profile_photo.url})
 
   const addProfilePhoto = async (event) => {
     event.preventDefault()
@@ -51,12 +62,12 @@ const UserProfile = props => {
         throw new Error(errorMessage)
       }
       const newPhoto = await response.json()
-      setProfileImage({image: newPhoto.user.profile_photo.url})
+      setProfilePic(newPhoto.user.profile_photo.url)
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
   }
-
+  
   const handleFileUpload = (acceptedFiles) => {
     setProfileImage({image: acceptedFiles[0]})
   }
@@ -70,13 +81,13 @@ const UserProfile = props => {
               <section>
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  <img src={profileImage.image} className="photo" id="profile-photo"></img>
+                  <img src={profilePic} className="photo" id="profile-photo"></img>
                   <p id="profile-para">Click photo or drag 'n' drop to upload a custom photo!</p>
                 </div>
               </section>
             )}
           </Dropzone>
-          <input className="button" type="submit" value="Submit" />
+          <input className="profile-button" type="submit" value="Submit" />
         </form>
       </div>
       <div className="content-wrapper">

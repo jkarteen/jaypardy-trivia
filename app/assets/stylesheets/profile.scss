@@ -25,6 +25,20 @@
   display: inline-block;
 }
 
+.profile-button {
+  color: white;
+  border: solid white 2px;
+  border-radius: 5px;
+  background-color: #3f3f9c;
+  box-shadow: 10px 10px 10px #0e0e35;
+}
+
+.profile-button:hover {
+  transition: 0.5s;
+  background-color: white;
+  color: black;
+}
+
 #profile-photo {
   display: flex;
 }
