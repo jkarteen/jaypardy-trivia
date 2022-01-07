@@ -63,13 +63,18 @@ const UserProfile = props => {
       }
       const newPhoto = await response.json()
       setProfilePic(newPhoto.user.profile_photo.url)
+      setProfileImage({image: newPhoto.user.profile_photo.url, status: false})
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`)
     }
   }
   
   const handleFileUpload = (acceptedFiles) => {
-    setProfileImage({image: acceptedFiles[0]})
+    setProfileImage({image: acceptedFiles[0], status: true})
+  }
+  let buttonElement = null
+  if (profileImage.status == true) {
+    buttonElement = <input className="profile-button" type="submit" value="Submit" />
   }
 
   return (
@@ -87,7 +92,7 @@ const UserProfile = props => {
               </section>
             )}
           </Dropzone>
-          <input className="profile-button" type="submit" value="Submit" />
+          {buttonElement}
         </form>
       </div>
       <div className="content-wrapper">
