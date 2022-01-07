@@ -13,9 +13,7 @@ class Api::V1::UsersController < ApiController
     if params["profile_photo"]
       photo = User.find(params["id"])
       photo.profile_photo = params["profile_photo"]
-      binding.pry
       if photo.save
-        binding.pry
         render json: photo
       end
     else
