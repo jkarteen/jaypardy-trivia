@@ -7,7 +7,8 @@ const ClueModal = props => {
   const [progressCounter, setProgressCounter] = useState(0)
 
   if (progressCounter === 25){
-    postScore(props.currentUser.id, props.currentScore)
+    let scoreObj = {total: props.currentScore.total, user_id: props.currentUser.id} 
+    postScore(scoreObj)
     updateUser(props.currentUser.id, props.currentUser.games_played + 1)
     setProgressCounter(0)
   }

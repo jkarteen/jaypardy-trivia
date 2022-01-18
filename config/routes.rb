@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show, :update] do
         resources :scores, only: [:index, :create]
       end
-      resources :scores, only: [:index]
+      resources :scores, only: [:index, :create]
     end
   end
 end
