@@ -4,10 +4,11 @@ import postScore from '../apiClient/postScore'
 import updateUser from '../apiClient/updateUser'
 
 const ClueModal = props => {
-  const [progressCounter, setProgressCounter] = useState(0)
+  const [progressCounter, setProgressCounter] = useState(24)
 
   if (progressCounter === 25){
-    postScore(props.currentUser.id, props.currentScore)
+    let scoreObj = {total: props.currentScore.total, user_id: props.currentUser.id} 
+    postScore(scoreObj)
     updateUser(props.currentUser.id, props.currentUser.games_played + 1)
     setProgressCounter(0)
   }

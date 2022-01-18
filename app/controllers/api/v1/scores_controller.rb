@@ -6,7 +6,7 @@ class Api::V1::ScoresController < ApiController
 
   def create
     new_score = Score.new(score_params)
-    new_score.user = User.find(params["user_id"])
+    new_score.user = User.find(score_params["user_id"])
     if new_score.save
       render json: { response: "Your scores have been updated!" }
     else
@@ -18,6 +18,6 @@ class Api::V1::ScoresController < ApiController
   private
 
   def score_params
-    params.require(:score).permit(:total)
+    params.require(:score).permit(:total, :user_id)
   end
 end

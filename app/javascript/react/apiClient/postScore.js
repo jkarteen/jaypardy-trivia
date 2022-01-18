@@ -1,13 +1,13 @@
-const postScore = async (user, currentScore) => {
+const postScore = async (scoreObj) => {
   try {
-    const response = await fetch(`/api/v1/users/${user}/scores`, {
+    const response = await fetch(`/api/v1/users/${scoreObj.user}/scores`, {
       credentials: "same-origin",
       method: "POST",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(currentScore)
+      body: JSON.stringify(scoreObj)
     })
     if (!response.ok) {
       const errorMessage = `${response.status} (${response.statusText})`

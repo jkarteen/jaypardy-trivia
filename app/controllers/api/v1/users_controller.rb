@@ -23,6 +23,7 @@ class Api::V1::UsersController < ApiController
         errors = new_score.errors.full_messages.to_sentence
         render json: { response: errors }
       end
+      render json: { user: contestant}
     end
   end
 
